@@ -89,11 +89,12 @@ def dump_mlp(clf, feature_names, threshold=0, precision=4, indent_char=" "):
     return code
 
 
-def export_clf_to_header(clf, feature_names):
+def export_clf(clf, feature_names):
     if type(clf) == DecisionTreeClassifier:
         dumped_clf = dump_tree(clf, feature_names, indent_char=" ")
     elif type(clf) == LogisticRegression:
-        dumped_clf = dump_logisticregression(clf, feature_names, indent_char=" " * 4)
+        dumped_clf = dump_logisticregression(
+            clf, feature_names, indent_char=" " * 4)
     elif type(clf) == MLPClassifier:
         dumped_clf = dump_mlp(clf, feature_names, indent_char=" " * 4)
     else:

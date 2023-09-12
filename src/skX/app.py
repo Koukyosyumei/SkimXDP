@@ -4,7 +4,7 @@ import os
 import pickle
 import time
 
-from .exporter import export_clf_to_header
+from .exporter import export_clf
 from .template import template_program, helper_header, helper_header_name
 
 
@@ -47,7 +47,8 @@ def add_args(parser):
         help="name of interface",
     )
 
-    parser.add_argument("-s", "--stop_after_generation_of_sources", action="store_true")
+    parser.add_argument(
+        "-s", "--stop_after_generation_of_sources", action="store_true")
 
     parser.add_argument("-c", "--stop_after_compile", action="store_true")
 
@@ -72,13 +73,13 @@ def main():
 
     with open(args.path_to_model_and_featurenames, "rb") as f:
         clf, feature_names = pickle.load(f)
-    header_content = export_clf_to_header(clf, feature_names)
+    dumped_clf = export_clf(clf, feature_names)
 
     c_content = template_program.replace(
         '#include "PLEASE_INCLUDE_APPRIPRIATE_HEADER_THAT_DEFINES_FILTER_MDOEL"',
         f'#include "{args.file_name}.h"',
     )
-    c_content = c_content.replace("INSERTYOURLOGICTOFILTERPACKETS", header_content)
+    c_content = c_content.replace("INSERTYOURLOGICTOFILTERPACKETS", dumped_clf)
 
     with open(
         os.path.join(args.dir_to_save_outputs, args.file_name + ".c"), mode="w"
