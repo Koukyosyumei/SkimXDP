@@ -103,7 +103,7 @@ int xdp(struct xdp_md *ctx) {
     uint16_t tcp_fin_flag = ntohs(tcph->fin);
 
     int y = 0;
-    y += (13 + (16 * ip_total_length) + (790 * ip_ttl) + (0 * ip_frag_offset) + (79 * ip_protocol) + (53 * ip_version) + (1 * tcp_syn_flag) + (12 * tcp_ack_flag) + (0 * tcp_fin_flag) + (6 * tcp_rst_flag) + (0 * tcp_window_size)) > 0;
+    y += (28952 + (0 * ip_total_length) + (-287 * ip_ttl) + (38239 * ip_frag_offset) + (-346 * ip_protocol) + (271 * ip_version) + (178 * tcp_syn_flag) + (340 * tcp_ack_flag) + (-171 * tcp_fin_flag) + (150 * tcp_rst_flag) + (0 * tcp_window_size)) > 0;
 
 
     __u32 key = 0;

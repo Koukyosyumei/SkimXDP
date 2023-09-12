@@ -104,7 +104,7 @@ int xdp(struct xdp_md *ctx) {
     uint16_t tcp_syn_flag = ntohs(tcph->syn);
     uint16_t tcp_fin_flag = ntohs(tcph->fin);
 
-    int y = 1;
+    int y = 0;
 INSERTYOURLOGICTOFILTERPACKETS
 
     __u32 key = 0;

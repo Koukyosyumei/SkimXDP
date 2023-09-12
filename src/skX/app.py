@@ -60,6 +60,14 @@ def add_args(parser):
         help="how many times skX should check the existence of the compiled object before attaching it to the network interface.",
     )
 
+    parser.add_argument(
+        "-p",
+        "--precision",
+        type=int,
+        default=4,
+        help="precision for quantization",
+    )
+
     return parser
 
 
@@ -73,7 +81,7 @@ def main():
 
     with open(args.path_to_model_and_featurenames, "rb") as f:
         clf, feature_names = pickle.load(f)
-    dumped_clf = export_clf(clf, feature_names)
+    dumped_clf = export_clf(clf, feature_names, precision=args.precision)
 
     c_content = template_program.replace(
         '#include "PLEASE_INCLUDE_APPRIPRIATE_HEADER_THAT_DEFINES_FILTER_MDOEL"',
