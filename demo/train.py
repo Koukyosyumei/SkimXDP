@@ -32,7 +32,7 @@ if __name__ == "__main__":
         pickle.dump((clf, X.columns.tolist()), f)
 
     clf = MLPClassifier(hidden_layer_sizes=(
-        10, 5), random_state=1, max_iter=50)
+        20, 15), activation="identity", random_state=1, max_iter=50)
     clf.fit(X_train, y_train)
     clf.fit(X_train, y_train)
     print("AUC of MLP: ", roc_auc_score(
