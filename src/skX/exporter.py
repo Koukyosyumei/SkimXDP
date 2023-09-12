@@ -53,31 +53,32 @@ def dump_tree(clf, feature_names, node_idx=0, indent_cnt=2, indent_char=" "):
     return code
 
 
-def dump_logisticregression(clf, feature_names, threshold=0, indent_char=" "):
+def dump_logisticregression(clf, feature_names, threshold=0, precision=4, indent_char=" "):
     code = indent_char
-    code += f" return ({clf.intercept_[0]}"
+    code += f" return ({int(clf.intercept_[0] * (10**(precision)))}"
     for c, n in zip(clf.coef_[0], feature_names):
-        code += f" + ({c} * (float){n})"
+        code += f" + ({int(c * (10**precision))} * {n})"
     code += f") > {threshold};\n"
     return code
 
 
-def dump_mlp(clf, feature_names, threshold=0, indent_char=" "):
+def dump_mlp(clf, feature_names, threshold=0, precision=4, indent_char=" "):
     code = ""
     len_layers = len(clf.coefs_)
     for c, n in enumerate(feature_names):
-        code += f"{indent_char}float h_0_{c} = (float){n};\n"
+        code += f"{indent_char}int h_0_{c} = (int){n};\n"
 
     for layer_id in range(len_layers):
         code += "\n"
         for j in range(clf.coefs_[layer_id].shape[1]):
-            code += f"{indent_char}float h_{layer_id + 1}_{j} = {clf.intercepts_[layer_id][j]}"
+            code += f"{indent_char}int h_{layer_id + 1}_{j} = {int(clf.intercepts_[layer_id][j] * (10 ** precision))}"
             for c in range(len(clf.coefs_[layer_id][:, j])):
-                code += f" + ({clf.coefs_[layer_id][c, j]} * h_{layer_id}_{c})"
+                code += f" + ({int(clf.coefs_[layer_id][c, j] * (10 ** precision))} * h_{layer_id}_{c})"
             code += ";\n"
             if layer_id < len_layers - 1:
                 if clf.activation == "relu":
-                    code += f"{indent_char}h_{layer_id + 1}_{j} = max(0, h_{layer_id}_{j});\n"
+                    code += f"{indent_char}h_{layer_id + 1}_{j} = (0 > h_{layer_id + 1}_{j})?0:h_{layer_id + 1}_{j};\n"
+                code += f"{indent_char}h_{layer_id + 1}_{j} /= {10 ** precision};\n"
             else:
                 code += f"{indent_char}return h_{layer_id + 1}_{j} > {threshold};\n"
     return code
@@ -87,7 +88,8 @@ def export_clf_to_header(clf, feature_names):
     if type(clf) == DecisionTreeClassifier:
         dumped_clf = dump_tree(clf, feature_names, indent_char=" ")
     elif type(clf) == LogisticRegression:
-        dumped_clf = dump_logisticregression(clf, feature_names, indent_char=" ")
+        dumped_clf = dump_logisticregression(
+            clf, feature_names, indent_char=" ")
     elif type(clf) == MLPClassifier:
         dumped_clf = dump_mlp(clf, feature_names, indent_char=" ")
     else:

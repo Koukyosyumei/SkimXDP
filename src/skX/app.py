@@ -47,8 +47,7 @@ def add_args(parser):
         help="name of interface",
     )
 
-    parser.add_argument(
-        "-s", "--stop_after_generation_of_sources", action="store_true")
+    parser.add_argument("-s", "--stop_after_generation_of_sources", action="store_true")
 
     parser.add_argument("-c", "--stop_after_compile", action="store_true")
 
