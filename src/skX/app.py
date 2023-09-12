@@ -46,6 +46,11 @@ def add_args(parser):
         help="name of interface",
     )
 
+    parser.add_argument(
+        "-s", "--stop_after_generation_of_sources", action="store_true")
+
+    parser.add_argument("-c", "--stop_after_compile", action="store_true")
+
     return parser
 
 
@@ -76,6 +81,9 @@ def main():
     ) as f:
         f.write(header_content)
 
+    if args.stop_after_generation_of_sources:
+        return
+
     compile_clang_cmd = f"clang -Wno-unused-value -Wno-pointer-sign -Wno-compare-distinct-pointer-types -Wno-gnu-variable-sized-type-not-at-end -Wno-tautological-compare -g -c -O2 -S -emit-llvm {os.path.join(args.dir_to_save_outputs, args.file_name + '.c')} -o - "
     p1 = subprocess.Popen(compile_clang_cmd.split(), stdout=subprocess.PIPE)
     compile_lcc_cmd = f"llc -march=bpf -filetype=obj -o {os.path.join(args.dir_to_save_outputs, args.file_name)}.o"
@@ -83,6 +91,8 @@ def main():
                           stdin=p1.stdout, stdout=subprocess.PIPE)
     p1.stdout.close()
 
-    attach_cmd = f"sudo ip link set dev {args.interface} xdp obj {os.path.join(args.dir_to_save_outputs, args.file_name)}.o"
-    print(attach_cmd)
+    if args.stop_after_compile:
+        return
+
+    attach_cmd = f"ip link set dev {args.interface} xdp obj {os.path.join(args.dir_to_save_outputs, args.file_name)}.o"
     subprocess.Popen(attach_cmd.split())
