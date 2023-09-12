@@ -104,1027 +104,878 @@ int xdp(struct xdp_md *ctx) {
 
     int y = 1;
     if (ip_ttl <= 96) {
-     if (ip_ttl <= 26) {
-      if (ip_ttl <= 8) {
-       y = 0;
-      }
-      else {
-       y = 0;
-      }
-     }
-     else {
-      if (tcp_window_size <= 7584) {
-       if (tcp_window_size <= 5832) {
-        if (ip_protocol <= 11) {
-         y = 1;
-        }
-        else {
-         if (ip_total_length <= 72) {
-          if (ip_total_length <= 58) {
-           y = 0;
-          }
-          else {
-           if (ip_total_length <= 70) {
-            if (ip_total_length <= 62) {
-             if (ip_total_length <= 60) {
-              if (ip_total_length <= 59) {
-               y = 1;
-              }
-              else {
-               y = 0;
-              }
-             }
-             else {
-              y = 1;
-             }
-            }
-            else {
-             if (ip_total_length <= 66) {
-              y = 0;
-             }
-             else {
-              y = 0;
-             }
-            }
-           }
-           else {
-            if (ip_total_length <= 71) {
-             y = 1;
-            }
-            else {
-             y = 0;
-            }
-           }
-          }
-         }
-         else {
-          if (ip_total_length <= 177) {
-           y = 1;
-          }
-          else {
-           if (ip_total_length <= 294) {
-            y = 0;
-           }
-           else {
-            y = 1;
-           }
-          }
-         }
-        }
-       }
-       else {
-        if (ip_total_length <= 42) {
-         y = 0;
-        }
-        else {
-         if (tcp_window_size <= 5864) {
-          if (ip_total_length <= 48) {
-           y = 1;
-          }
-          else {
-           y = 0;
-          }
-         }
-         else {
-          if (tcp_sequence_num <= 130802) {
-           if (tcp_window_size <= 6944) {
-            if (tcp_ack_num <= 227) {
-             if (ip_total_length <= 713) {
-              if (tcp_ack_num <= 206) {
-               if (tcp_sequence_num <= 1114) {
-                if (ip_total_length <= 341) {
-                 y = 1;
-                }
-                else {
-                 if (ip_total_length <= 625) {
-                  if (ip_total_length <= 558) {
-                   if (ip_total_length <= 529) {
-                    y = 0;
-                   }
-                   else {
-                    y = 1;
-                   }
-                  }
-                  else {
-                   y = 0;
-                  }
-                 }
-                 else {
-                  if (ip_total_length <= 669) {
-                   y = 1;
-                  }
-                  else {
-                   if (tcp_ack_num <= 162) {
-                    y = 0;
-                   }
-                   else {
-                    if (tcp_ack_num <= 175) {
-                     if (ip_total_length <= 683) {
-                      y = 1;
-                     }
-                     else {
-                      y = 0;
-                     }
-                    }
-                    else {
-                     y = 1;
-                    }
-                   }
-                  }
-                 }
-                }
-               }
-               else {
-                if (tcp_ack_num <= 113) {
-                 y = 1;
-                }
-                else {
-                 y = 0;
-                }
-               }
-              }
-              else {
-               if (ip_total_length <= 334) {
-                y = 1;
-               }
-               else {
-                if (ip_total_length <= 658) {
-                 y = 0;
-                }
-                else {
-                 y = 1;
-                }
-               }
-              }
-             }
-             else {
-              if (tcp_ack_num <= 173) {
-               if (tcp_ack_num <= 150) {
-                y = 1;
-               }
-               else {
+        if (ip_ttl <= 26) {
+            if (ip_total_length <= 265) {
                 y = 0;
-               }
-              }
-              else {
-               y = 1;
-              }
-             }
-            }
-            else {
-             if (tcp_ack_num <= 500) {
-              y = 1;
-             }
-             else {
-              if (tcp_ack_num <= 516) {
-               if (tcp_sequence_num <= 3921) {
-                if (ip_total_length <= 675) {
-                 y = 1;
-                }
-                else {
-                 if (ip_total_length <= 1300) {
-                  if (tcp_sequence_num <= 1449) {
-                   y = 0;
-                  }
-                  else {
-                   y = 1;
-                  }
-                 }
-                 else {
-                  if (tcp_ack_num <= 509) {
-                   y = 1;
-                  }
-                  else {
-                   if (tcp_sequence_num <= 725) {
-                    y = 1;
-                   }
-                   else {
-                    y = 1;
-                   }
-                  }
-                 }
-                }
-               }
-               else {
+            } else {
                 y = 0;
-               }
-              }
-              else {
-               y = 1;
-              }
-             }
             }
-           }
-           else {
-            if (tcp_ack_num <= 557) {
-             y = 0;
-            }
-            else {
-             if (ip_total_length <= 1495) {
-              if (tcp_window_size <= 7520) {
-               if (tcp_sequence_num <= 2909) {
-                y = 1;
-               }
-               else {
-                if (tcp_sequence_num <= 2987) {
-                 y = 0;
-                }
-                else {
-                 y = 1;
-                }
-               }
-              }
-              else {
-               if (tcp_ack_num <= 845) {
-                y = 0;
-               }
-               else {
-                y = 1;
-               }
-              }
-             }
-             else {
-              if (tcp_ack_num <= 768) {
-               if (tcp_window_size <= 7072) {
-                y = 1;
-               }
-               else {
-                if (tcp_sequence_num <= 1455) {
-                 if (tcp_ack_num <= 649) {
-                  y = 0;
-                 }
-                 else {
-                  if (tcp_sequence_num <= 725) {
-                   if (tcp_ack_num <= 733) {
-                    y = 0;
-                   }
-                   else {
-                    y = 1;
-                   }
-                  }
-                  else {
-                   y = 1;
-                  }
-                 }
-                }
-                else {
-                 y = 0;
-                }
-               }
-              }
-              else {
-               y = 1;
-              }
-             }
-            }
-           }
-          }
-          else {
-           y = 0;
-          }
-         }
-        }
-       }
-      }
-      else {
-       if (ip_total_length <= 46) {
-        y = 0;
-       }
-       else {
-        if (tcp_sequence_num <= 430940) {
-         if (tcp_window_size <= 25056) {
-          if (tcp_sequence_num <= 66173) {
-           if (tcp_window_size <= 24992) {
-            if (tcp_sequence_num <= 53921) {
-             if (ip_total_length <= 1495) {
-              if (ip_total_length <= 956) {
-               if (tcp_window_size <= 8352) {
-                if (tcp_window_size <= 8288) {
-                 y = 1;
-                }
-                else {
-                 if (tcp_ack_num <= 1234) {
-                  y = 0;
-                 }
-                 else {
-                  y = 1;
-                 }
-                }
-               }
-               else {
-                y = 1;
-               }
-              }
-              else {
-               if (ip_total_length <= 958) {
-                if (tcp_sequence_num <= 29337) {
-                 y = 1;
-                }
-                else {
-                 y = 0;
-                }
-               }
-               else {
-                if (ip_total_length <= 1116) {
-                 if (ip_total_length <= 1111) {
-                  if (ip_total_length <= 1009) {
-                   y = 1;
-                  }
-                  else {
-                   if (ip_total_length <= 1021) {
-                    y = 0;
-                   }
-                   else {
-                    if (tcp_sequence_num <= 1273) {
-                     y = 0;
-                    }
-                    else {
-                     y = 1;
-                    }
-                   }
-                  }
-                 }
-                 else {
-                  y = 0;
-                 }
-                }
-                else {
-                 if (ip_total_length <= 1217) {
-                  if (ip_total_length <= 1216) {
-                   y = 1;
-                  }
-                  else {
-                   y = 0;
-                  }
-                 }
-                 else {
-                  if (tcp_sequence_num <= 27299) {
-                   y = 1;
-                  }
-                  else {
-                   if (tcp_sequence_num <= 27308) {
-                    y = 0;
-                   }
-                   else {
-                    y = 1;
-                   }
-                  }
-                 }
-                }
-               }
-              }
-             }
-             else {
-              if (tcp_ack_num <= 388) {
-               if (tcp_ack_num <= 362) {
-                y = 1;
-               }
-               else {
-                y = 0;
-               }
-              }
-              else {
-               if (tcp_window_size <= 7776) {
-                if (tcp_ack_num <= 944) {
-                 y = 1;
-                }
-                else {
-                 if (tcp_ack_num <= 962) {
-                  if (tcp_ack_num <= 947) {
-                   y = 0;
-                  }
-                  else {
-                   if (tcp_sequence_num <= 1449) {
-                    y = 0;
-                   }
-                   else {
-                    y = 1;
-                   }
-                  }
-                 }
-                 else {
-                  y = 1;
-                 }
-                }
-               }
-               else {
-                if (tcp_window_size <= 15392) {
-                 if (tcp_window_size <= 15328) {
-                  if (tcp_sequence_num <= 34622) {
-                   if (tcp_ack_num <= 2756) {
-                    if (tcp_sequence_num <= 31165) {
-                     if (tcp_sequence_num <= 5581) {
-                      y = 1;
-                     }
-                     else {
-                      if (tcp_sequence_num <= 5637) {
-                       y = 0;
-                      }
-                      else {
-                       if (tcp_window_size <= 8032) {
-                        if (tcp_window_size <= 7968) {
-                         y = 1;
-                        }
-                        else {
-                         if (tcp_ack_num <= 1044) {
-                          y = 0;
-                         }
-                         else {
-                          y = 1;
-                         }
-                        }
-                       }
-                       else {
-                        if (tcp_window_size <= 10272) {
-                         if (tcp_window_size <= 10208) {
-                          if (tcp_ack_num <= 1453) {
-                           if (tcp_sequence_num <= 6732) {
-                            if (tcp_sequence_num <= 6714) {
-                             y = 1;
-                            }
-                            else {
-                             y = 0;
-                            }
-                           }
-                           else {
-                            y = 1;
-                           }
-                          }
-                          else {
-                           if (tcp_ack_num <= 1455) {
-                            if (tcp_sequence_num <= 12363) {
-                             y = 1;
-                            }
-                            else {
-                             y = 0;
-                            }
-                           }
-                           else {
-                            if (tcp_window_size <= 8800) {
-                             y = 1;
-                            }
-                            else {
-                             if (tcp_window_size <= 8960) {
-                              if (tcp_sequence_num <= 14382) {
-                               y = 1;
-                              }
-                              else {
-                               y = 0;
-                              }
-                             }
-                             else {
-                              if (tcp_sequence_num <= 14917) {
-                               if (tcp_sequence_num <= 12772) {
-                                y = 1;
-                               }
-                               else {
+        } else {
+            if (tcp_window_size <= 7584) {
+                if (tcp_window_size <= 5832) {
+                    if (ip_protocol <= 11) {
+                        y = 1;
+                    } else {
+                        if (ip_total_length <= 72) {
+                            if (ip_total_length <= 58) {
                                 y = 0;
-                               }
-                              }
-                              else {
-                               y = 1;
-                              }
-                             }
+                            } else {
+                                if (ip_total_length <= 70) {
+                                    if (ip_total_length <= 62) {
+                                        if (ip_total_length <= 60) {
+                                            if (ip_total_length <= 59) {
+                                                y = 1;
+                                            } else {
+                                                y = 0;
+                                            }
+                                        } else {
+                                            y = 1;
+                                        }
+                                    } else {
+                                        if (ip_total_length <= 66) {
+                                            y = 0;
+                                        } else {
+                                            y = 0;
+                                        }
+                                    }
+                                } else {
+                                    if (ip_total_length <= 71) {
+                                        y = 1;
+                                    } else {
+                                        y = 0;
+                                    }
+                                }
                             }
-                           }
-                          }
-                         }
-                         else {
-                          if (tcp_ack_num <= 2190) {
-                           y = 0;
-                          }
-                          else {
-                           y = 1;
-                          }
-                         }
+                        } else {
+                            if (ip_total_length <= 177) {
+                                y = 1;
+                            } else {
+                                if (ip_total_length <= 294) {
+                                    y = 0;
+                                } else {
+                                    y = 1;
+                                }
+                            }
                         }
-                        else {
-                         if (tcp_sequence_num <= 8872) {
-                          if (tcp_sequence_num <= 8813) {
-                           y = 1;
-                          }
-                          else {
-                           y = 0;
-                          }
-                         }
-                         else {
-                          y = 1;
-                         }
-                        }
-                       }
-                      }
-                     }
                     }
-                    else {
-                     if (tcp_sequence_num <= 31186) {
-                      y = 0;
-                     }
-                     else {
-                      y = 1;
-                     }
-                    }
-                   }
-                   else {
-                    if (tcp_ack_num <= 2757) {
-                     y = 0;
-                    }
-                    else {
-                     if (tcp_ack_num <= 2760) {
-                      if (tcp_sequence_num <= 7788) {
-                       y = 1;
-                      }
-                      else {
-                       if (tcp_sequence_num <= 13772) {
+                } else {
+                    if (ip_total_length <= 42) {
                         y = 0;
-                       }
-                       else {
-                        y = 1;
-                       }
-                      }
-                     }
-                     else {
-                      if (tcp_sequence_num <= 19346) {
-                       y = 1;
-                      }
-                      else {
-                       if (tcp_sequence_num <= 19590) {
-                        y = 0;
-                       }
-                       else {
-                        if (tcp_ack_num <= 3331) {
-                         y = 1;
+                    } else {
+                        if (tcp_window_size <= 5864) {
+                            if (ip_total_length <= 48) {
+                                y = 1;
+                            } else {
+                                y = 0;
+                            }
+                        } else {
+                            if (tcp_window_size <= 6944) {
+                                if (ip_total_length <= 241) {
+                                    if (ip_total_length <= 139) {
+                                        y = 1;
+                                    } else {
+                                        if (ip_total_length <= 140) {
+                                            y = 1;
+                                        } else {
+                                            y = 1;
+                                        }
+                                    }
+                                } else {
+                                    if (ip_total_length <= 619) {
+                                        if (ip_total_length <= 615) {
+                                            if (ip_total_length <= 257) {
+                                                y = 0;
+                                            } else {
+                                                if (ip_total_length <= 597) {
+                                                    if (ip_total_length <=
+                                                        516) {
+                                                        if (ip_total_length <=
+                                                            306) {
+                                                            if (ip_total_length <=
+                                                                276) {
+                                                                y = 1;
+                                                            } else {
+                                                                y = 0;
+                                                            }
+                                                        } else {
+                                                            y = 1;
+                                                        }
+                                                    } else {
+                                                        if (ip_total_length <=
+                                                            529) {
+                                                            y = 0;
+                                                        } else {
+                                                            if (ip_total_length <=
+                                                                558) {
+                                                                y = 1;
+                                                            } else {
+                                                                y = 0;
+                                                            }
+                                                        }
+                                                    }
+                                                } else {
+                                                    y = 1;
+                                                }
+                                            }
+                                        } else {
+                                            y = 0;
+                                        }
+                                    } else {
+                                        if (ip_total_length <= 669) {
+                                            y = 1;
+                                        } else {
+                                            if (ip_total_length <= 1173) {
+                                                if (ip_total_length <= 874) {
+                                                    if (ip_total_length <=
+                                                        676) {
+                                                        if (ip_total_length <=
+                                                            675) {
+                                                            if (ip_total_length <=
+                                                                670) {
+                                                                y = 1;
+                                                            } else {
+                                                                y = 1;
+                                                            }
+                                                        } else {
+                                                            y = 0;
+                                                        }
+                                                    } else {
+                                                        if (ip_total_length <=
+                                                            690) {
+                                                            if (ip_total_length <=
+                                                                686) {
+                                                                y = 1;
+                                                            } else {
+                                                                if (ip_total_length <=
+                                                                    687) {
+                                                                    y = 1;
+                                                                } else {
+                                                                    if (ip_total_length <=
+                                                                        689) {
+                                                                        y = 1;
+                                                                    } else {
+                                                                        y = 1;
+                                                                    }
+                                                                }
+                                                            }
+                                                        } else {
+                                                            if (ip_total_length <=
+                                                                712) {
+                                                                y = 1;
+                                                            } else {
+                                                                if (ip_total_length <=
+                                                                    714) {
+                                                                    if (ip_total_length <=
+                                                                        713) {
+                                                                        y = 1;
+                                                                    } else {
+                                                                        y = 0;
+                                                                    }
+                                                                } else {
+                                                                    y = 1;
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                } else {
+                                                    if (ip_total_length <=
+                                                        929) {
+                                                        if (ip_total_length <=
+                                                            884) {
+                                                            if (ip_total_length <=
+                                                                879) {
+                                                                y = 0;
+                                                            } else {
+                                                                y = 1;
+                                                            }
+                                                        } else {
+                                                            y = 0;
+                                                        }
+                                                    } else {
+                                                        if (ip_total_length <=
+                                                            1070) {
+                                                            if (ip_total_length <=
+                                                                994) {
+                                                                y = 1;
+                                                            } else {
+                                                                if (ip_total_length <=
+                                                                    996) {
+                                                                    y = 0;
+                                                                } else {
+                                                                    y = 1;
+                                                                }
+                                                            }
+                                                        } else {
+                                                            if (ip_total_length <=
+                                                                1162) {
+                                                                y = 0;
+                                                            } else {
+                                                                if (ip_total_length <=
+                                                                    1171) {
+                                                                    y = 1;
+                                                                } else {
+                                                                    y = 0;
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            } else {
+                                                if (ip_total_length <= 1305) {
+                                                    if (ip_total_length <=
+                                                        1254) {
+                                                        if (ip_total_length <=
+                                                            1253) {
+                                                            y = 1;
+                                                        } else {
+                                                            y = 0;
+                                                        }
+                                                    } else {
+                                                        y = 1;
+                                                    }
+                                                } else {
+                                                    if (ip_total_length <=
+                                                        1306) {
+                                                        y = 0;
+                                                    } else {
+                                                        if (ip_total_length <=
+                                                            1361) {
+                                                            y = 1;
+                                                        } else {
+                                                            if (ip_total_length <=
+                                                                1366) {
+                                                                y = 0;
+                                                            } else {
+                                                                if (ip_total_length <=
+                                                                    1472) {
+                                                                    if (ip_total_length <=
+                                                                        1433) {
+                                                                        y = 1;
+                                                                    } else {
+                                                                        y = 0;
+                                                                    }
+                                                                } else {
+                                                                    if (ip_total_length <=
+                                                                        1495) {
+                                                                        y = 1;
+                                                                    } else {
+                                                                        y = 1;
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            } else {
+                                if (ip_total_length <= 1052) {
+                                    if (tcp_window_size <= 7520) {
+                                        if (ip_total_length <= 272) {
+                                            y = 1;
+                                        } else {
+                                            if (tcp_window_size <= 7168) {
+                                                y = 0;
+                                            } else {
+                                                y = 1;
+                                            }
+                                        }
+                                    } else {
+                                        if (ip_total_length <= 470) {
+                                            if (tcp_fin_flag <= 0) {
+                                                y = 0;
+                                            } else {
+                                                y = 1;
+                                            }
+                                        } else {
+                                            y = 1;
+                                        }
+                                    }
+                                } else {
+                                    if (tcp_window_size <= 7328) {
+                                        if (ip_total_length <= 1495) {
+                                            if (ip_total_length <= 1321) {
+                                                y = 0;
+                                            } else {
+                                                y = 1;
+                                            }
+                                        } else {
+                                            if (tcp_window_size <= 7264) {
+                                                if (tcp_window_size <= 7008) {
+                                                    y = 0;
+                                                } else {
+                                                    if (tcp_window_size <=
+                                                        7072) {
+                                                        y = 1;
+                                                    } else {
+                                                        if (tcp_window_size <=
+                                                            7168) {
+                                                            y = 0;
+                                                        } else {
+                                                            y = 0;
+                                                        }
+                                                    }
+                                                }
+                                            } else {
+                                                y = 0;
+                                            }
+                                        }
+                                    } else {
+                                        if (tcp_window_size <= 7488) {
+                                            if (tcp_window_size <= 7392) {
+                                                y = 1;
+                                            } else {
+                                                y = 1;
+                                            }
+                                        } else {
+                                            y = 1;
+                                        }
+                                    }
+                                }
+                            }
                         }
-                        else {
-                         if (tcp_ack_num <= 3525) {
-                          y = 0;
-                         }
-                         else {
-                          y = 1;
-                         }
+                    }
+                }
+            } else {
+                if (ip_total_length <= 46) {
+                    y = 0;
+                } else {
+                    if (tcp_window_size <= 21344) {
+                        if (tcp_window_size <= 21088) {
+                            if (ip_total_length <= 1495) {
+                                if (ip_total_length <= 858) {
+                                    if (tcp_window_size <= 8352) {
+                                        if (tcp_window_size <= 8288) {
+                                            y = 1;
+                                        } else {
+                                            if (ip_total_length <= 243) {
+                                                y = 1;
+                                            } else {
+                                                if (ip_total_length <= 563) {
+                                                    y = 0;
+                                                } else {
+                                                    y = 1;
+                                                }
+                                            }
+                                        }
+                                    } else {
+                                        y = 1;
+                                    }
+                                } else {
+                                    if (ip_total_length <= 863) {
+                                        if (tcp_window_size <= 16032) {
+                                            y = 1;
+                                        } else {
+                                            y = 0;
+                                        }
+                                    } else {
+                                        if (ip_total_length <= 1116) {
+                                            if (ip_total_length <= 1112) {
+                                                if (ip_total_length <= 1017) {
+                                                    if (tcp_window_size <=
+                                                        11424) {
+                                                        if (tcp_window_size <=
+                                                            11232) {
+                                                            y = 1;
+                                                        } else {
+                                                            y = 0;
+                                                        }
+                                                    } else {
+                                                        y = 1;
+                                                    }
+                                                } else {
+                                                    if (ip_total_length <=
+                                                        1021) {
+                                                        y = 0;
+                                                    } else {
+                                                        if (tcp_window_size <=
+                                                            8288) {
+                                                            if (tcp_window_size <=
+                                                                8032) {
+                                                                y = 1;
+                                                            } else {
+                                                                y = 0;
+                                                            }
+                                                        } else {
+                                                            y = 1;
+                                                        }
+                                                    }
+                                                }
+                                            } else {
+                                                y = 0;
+                                            }
+                                        } else {
+                                            if (ip_total_length <= 1217) {
+                                                if (ip_total_length <= 1216) {
+                                                    y = 1;
+                                                } else {
+                                                    y = 0;
+                                                }
+                                            } else {
+                                                if (ip_total_length <= 1275) {
+                                                    if (ip_total_length <=
+                                                        1273) {
+                                                        y = 1;
+                                                    } else {
+                                                        if (tcp_window_size <=
+                                                            12384) {
+                                                            y = 1;
+                                                        } else {
+                                                            if (tcp_window_size <=
+                                                                12928) {
+                                                                y = 0;
+                                                            } else {
+                                                                y = 1;
+                                                            }
+                                                        }
+                                                    }
+                                                } else {
+                                                    y = 1;
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            } else {
+                                if (tcp_window_size <= 10272) {
+                                    if (tcp_window_size <= 10144) {
+                                        if (tcp_window_size <= 7776) {
+                                            if (tcp_window_size <= 7712) {
+                                                y = 1;
+                                            } else {
+                                                y = 1;
+                                            }
+                                        } else {
+                                            if (tcp_window_size <= 7968) {
+                                                y = 1;
+                                            } else {
+                                                if (tcp_window_size <= 8032) {
+                                                    y = 1;
+                                                } else {
+                                                    if (tcp_window_size <=
+                                                        8736) {
+                                                        if (tcp_window_size <=
+                                                            8608) {
+                                                            if (tcp_window_size <=
+                                                                8544) {
+                                                                y = 1;
+                                                            } else {
+                                                                y = 1;
+                                                            }
+                                                        } else {
+                                                            y = 1;
+                                                        }
+                                                    } else {
+                                                        if (tcp_window_size <=
+                                                            8960) {
+                                                            if (tcp_window_size <=
+                                                                8832) {
+                                                                y = 0;
+                                                            } else {
+                                                                y = 1;
+                                                            }
+                                                        } else {
+                                                            if (tcp_window_size <=
+                                                                9056) {
+                                                                y = 1;
+                                                            } else {
+                                                                if (tcp_window_size <=
+                                                                    9184) {
+                                                                    if (tcp_window_size <=
+                                                                        9120) {
+                                                                        y = 1;
+                                                                    } else {
+                                                                        y = 1;
+                                                                    }
+                                                                } else {
+                                                                    if (tcp_window_size <=
+                                                                        10080) {
+                                                                        if (tcp_window_size <=
+                                                                            10016) {
+                                                                            y = 1;
+                                                                        } else {
+                                                                            y = 1;
+                                                                        }
+                                                                    } else {
+                                                                        y = 1;
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    } else {
+                                        if (tcp_window_size <= 10208) {
+                                            y = 0;
+                                        } else {
+                                            y = 1;
+                                        }
+                                    }
+                                } else {
+                                    if (tcp_window_size <= 13152) {
+                                        if (tcp_window_size <= 13088) {
+                                            if (tcp_window_size <= 12960) {
+                                                if (tcp_window_size <= 12384) {
+                                                    if (tcp_window_size <=
+                                                        11680) {
+                                                        if (tcp_window_size <=
+                                                            11616) {
+                                                            if (tcp_window_size <=
+                                                                11360) {
+                                                                if (tcp_window_size <=
+                                                                    11168) {
+                                                                    y = 1;
+                                                                } else {
+                                                                    if (tcp_window_size <=
+                                                                        11232) {
+                                                                        y = 1;
+                                                                    } else {
+                                                                        y = 1;
+                                                                    }
+                                                                }
+                                                            } else {
+                                                                if (tcp_window_size <=
+                                                                    11424) {
+                                                                    y = 1;
+                                                                } else {
+                                                                    y = 1;
+                                                                }
+                                                            }
+                                                        } else {
+                                                            y = 1;
+                                                        }
+                                                    } else {
+                                                        y = 1;
+                                                    }
+                                                } else {
+                                                    if (tcp_window_size <=
+                                                        12448) {
+                                                        y = 1;
+                                                    } else {
+                                                        y = 1;
+                                                    }
+                                                }
+                                            } else {
+                                                if (tcp_window_size <= 13024) {
+                                                    y = 1;
+                                                } else {
+                                                    y = 1;
+                                                }
+                                            }
+                                        } else {
+                                            y = 0;
+                                        }
+                                    } else {
+                                        if (tcp_window_size <= 13600) {
+                                            y = 1;
+                                        } else {
+                                            if (tcp_window_size <= 13664) {
+                                                y = 1;
+                                            } else {
+                                                if (tcp_window_size <= 13920) {
+                                                    if (tcp_window_size <=
+                                                        13824) {
+                                                        y = 1;
+                                                    } else {
+                                                        y = 1;
+                                                    }
+                                                } else {
+                                                    if (tcp_window_size <=
+                                                        18848) {
+                                                        if (tcp_window_size <=
+                                                            15392) {
+                                                            if (tcp_window_size <=
+                                                                15328) {
+                                                                if (tcp_window_size <=
+                                                                    14432) {
+                                                                    y = 1;
+                                                                } else {
+                                                                    if (tcp_window_size <=
+                                                                        14496) {
+                                                                        y = 1;
+                                                                    } else {
+                                                                        y = 1;
+                                                                    }
+                                                                }
+                                                            } else {
+                                                                y = 1;
+                                                            }
+                                                        } else {
+                                                            if (tcp_window_size <=
+                                                                15840) {
+                                                                y = 1;
+                                                            } else {
+                                                                if (tcp_window_size <=
+                                                                    15936) {
+                                                                    y = 1;
+                                                                } else {
+                                                                    if (tcp_window_size <=
+                                                                        17376) {
+                                                                        y = 1;
+                                                                    } else {
+                                                                        if (tcp_window_size <=
+                                                                            17472) {
+                                                                            y = 1;
+                                                                        } else {
+                                                                            if (tcp_window_size <=
+                                                                                18656) {
+                                                                                y = 1;
+                                                                            } else {
+                                                                                if (tcp_window_size <=
+                                                                                    18720) {
+                                                                                    y = 1;
+                                                                                } else {
+                                                                                    y = 1;
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    } else {
+                                                        if (tcp_window_size <=
+                                                            18912) {
+                                                            y = 1;
+                                                        } else {
+                                                            if (tcp_window_size <=
+                                                                19360) {
+                                                                if (tcp_window_size <=
+                                                                    19296) {
+                                                                    y = 1;
+                                                                } else {
+                                                                    y = 1;
+                                                                }
+                                                            } else {
+                                                                if (tcp_window_size <=
+                                                                    20384) {
+                                                                    y = 1;
+                                                                } else {
+                                                                    if (tcp_window_size <=
+                                                                        20448) {
+                                                                        y = 0;
+                                                                    } else {
+                                                                        y = 1;
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        } else {
+                            if (tcp_window_size <= 21152) {
+                                if (ip_total_length <= 1140) {
+                                    y = 1;
+                                } else {
+                                    y = 0;
+                                }
+                            } else {
+                                if (tcp_window_size <= 21280) {
+                                    y = 1;
+                                } else {
+                                    if (ip_total_length <= 1431) {
+                                        y = 1;
+                                    } else {
+                                        y = 1;
+                                    }
+                                }
+                            }
                         }
-                       }
-                      }
-                     }
-                    }
-                   }
-                  }
-                  else {
-                   if (tcp_sequence_num <= 34727) {
-                    y = 0;
-                   }
-                   else {
-                    if (tcp_window_size <= 8128) {
-                     if (tcp_window_size <= 7968) {
-                      y = 1;
-                     }
-                     else {
-                      y = 0;
-                     }
-                    }
-                    else {
-                     if (tcp_ack_num <= 1520) {
-                      y = 1;
-                     }
-                     else {
-                      if (tcp_ack_num <= 1682) {
-                       y = 0;
-                      }
-                      else {
-                       if (tcp_ack_num <= 3431) {
-                        y = 1;
-                       }
-                       else {
-                        if (tcp_ack_num <= 3460) {
-                         y = 0;
+                    } else {
+                        if (tcp_window_size <= 27104) {
+                            if (tcp_window_size <= 26976) {
+                                if (ip_total_length <= 1495) {
+                                    if (ip_total_length <= 471) {
+                                        if (ip_total_length <= 463) {
+                                            y = 1;
+                                        } else {
+                                            if (tcp_window_size <= 23264) {
+                                                y = 1;
+                                            } else {
+                                                y = 0;
+                                            }
+                                        }
+                                    } else {
+                                        y = 1;
+                                    }
+                                } else {
+                                    if (tcp_window_size <= 24288) {
+                                        if (tcp_window_size <= 23584) {
+                                            y = 1;
+                                        } else {
+                                            if (tcp_window_size <= 23648) {
+                                                y = 0;
+                                            } else {
+                                                y = 1;
+                                            }
+                                        }
+                                    } else {
+                                        if (tcp_window_size <= 24352) {
+                                            y = 0;
+                                        } else {
+                                            if (tcp_window_size <= 25888) {
+                                                if (tcp_window_size <= 25824) {
+                                                    y = 1;
+                                                } else {
+                                                    y = 1;
+                                                }
+                                            } else {
+                                                y = 1;
+                                            }
+                                        }
+                                    }
+                                }
+                            } else {
+                                if (ip_total_length <= 1386) {
+                                    y = 1;
+                                } else {
+                                    if (tcp_window_size <= 27040) {
+                                        y = 0;
+                                    } else {
+                                        y = 1;
+                                    }
+                                }
+                            }
+                        } else {
+                            if (tcp_window_size <= 48416) {
+                                if (tcp_window_size <= 48352) {
+                                    if (ip_total_length <= 925) {
+                                        if (tcp_window_size <= 27488) {
+                                            if (tcp_window_size <= 27424) {
+                                                y = 1;
+                                            } else {
+                                                if (ip_total_length <= 635) {
+                                                    y = 1;
+                                                } else {
+                                                    y = 0;
+                                                }
+                                            }
+                                        } else {
+                                            if (ip_total_length <= 507) {
+                                                if (ip_total_length <= 506) {
+                                                    y = 1;
+                                                } else {
+                                                    if (tcp_window_size <=
+                                                        43328) {
+                                                        y = 1;
+                                                    } else {
+                                                        if (tcp_window_size <=
+                                                            45696) {
+                                                            y = 0;
+                                                        } else {
+                                                            y = 1;
+                                                        }
+                                                    }
+                                                }
+                                            } else {
+                                                y = 1;
+                                            }
+                                        }
+                                    } else {
+                                        if (ip_total_length <= 936) {
+                                            if (tcp_window_size <= 32416) {
+                                                y = 1;
+                                            } else {
+                                                y = 0;
+                                            }
+                                        } else {
+                                            if (ip_total_length <= 1179) {
+                                                if (ip_total_length <= 1178) {
+                                                    y = 1;
+                                                } else {
+                                                    if (tcp_window_size <=
+                                                        32160) {
+                                                        y = 0;
+                                                    } else {
+                                                        y = 1;
+                                                    }
+                                                }
+                                            } else {
+                                                if (ip_total_length <= 1497) {
+                                                    y = 1;
+                                                } else {
+                                                    if (tcp_window_size <=
+                                                        37856) {
+                                                        if (tcp_window_size <=
+                                                            37792) {
+                                                            if (tcp_window_size <=
+                                                                34016) {
+                                                                if (tcp_window_size <=
+                                                                    30432) {
+                                                                    y = 1;
+                                                                } else {
+                                                                    if (tcp_window_size <=
+                                                                        30496) {
+                                                                        y = 1;
+                                                                    } else {
+                                                                        y = 1;
+                                                                    }
+                                                                }
+                                                            } else {
+                                                                if (tcp_window_size <=
+                                                                    34080) {
+                                                                    y = 1;
+                                                                } else {
+                                                                    if (tcp_window_size <=
+                                                                        36512) {
+                                                                        y = 1;
+                                                                    } else {
+                                                                        if (tcp_window_size <=
+                                                                            36576) {
+                                                                            y = 1;
+                                                                        } else {
+                                                                            y = 1;
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                        } else {
+                                                            y = 1;
+                                                        }
+                                                    } else {
+                                                        if (tcp_window_size <=
+                                                            43488) {
+                                                            y = 1;
+                                                        } else {
+                                                            if (tcp_window_size <=
+                                                                43552) {
+                                                                y = 1;
+                                                            } else {
+                                                                y = 1;
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                } else {
+                                    if (ip_total_length <= 1343) {
+                                        y = 1;
+                                    } else {
+                                        y = 1;
+                                    }
+                                }
+                            } else {
+                                y = 1;
+                            }
                         }
-                        else {
-                         if (tcp_sequence_num <= 39179) {
-                          if (tcp_sequence_num <= 37800) {
-                           y = 1;
-                          }
-                          else {
-                           y = 0;
-                          }
-                         }
-                         else {
-                          if (tcp_sequence_num <= 44346) {
-                           if (tcp_sequence_num <= 44051) {
-                            y = 1;
-                           }
-                           else {
-                            y = 0;
-                           }
-                          }
-                          else {
-                           y = 1;
-                          }
-                         }
-                        }
-                       }
-                      }
-                     }
                     }
-                   }
-                  }
-                 }
-                 else {
-                  if (tcp_sequence_num <= 26092) {
-                   y = 1;
-                  }
-                  else {
-                   y = 0;
-                  }
-                 }
                 }
-                else {
-                 if (tcp_window_size <= 24288) {
-                  y = 1;
-                 }
-                 else {
-                  if (tcp_window_size <= 24352) {
-                   if (tcp_sequence_num <= 33623) {
-                    y = 1;
-                   }
-                   else {
-                    y = 0;
-                   }
-                  }
-                  else {
-                   y = 1;
-                  }
-                 }
-                }
-               }
-              }
-             }
             }
-            else {
-             if (tcp_sequence_num <= 53962) {
-              y = 0;
-             }
-             else {
-              if (tcp_window_size <= 24192) {
-               if (tcp_ack_num <= 5444) {
-                y = 1;
-               }
-               else {
-                if (tcp_ack_num <= 5472) {
-                 y = 0;
-                }
-                else {
-                 if (ip_total_length <= 1312) {
-                  y = 1;
-                 }
-                 else {
-                  if (tcp_ack_num <= 6114) {
-                   y = 1;
-                  }
-                  else {
-                   if (tcp_window_size <= 19264) {
-                    y = 0;
-                   }
-                   else {
-                    if (tcp_window_size <= 20800) {
-                     y = 1;
-                    }
-                    else {
-                     if (tcp_ack_num <= 7359) {
-                      y = 0;
-                     }
-                     else {
-                      y = 1;
-                     }
-                    }
-                   }
-                  }
-                 }
-                }
-               }
-              }
-              else {
-               if (tcp_window_size <= 24384) {
-                y = 0;
-               }
-               else {
-                y = 1;
-               }
-              }
-             }
-            }
-           }
-           else {
-            if (tcp_sequence_num <= 7445) {
-             y = 0;
-            }
-            else {
-             y = 1;
-            }
-           }
-          }
-          else {
-           if (tcp_window_size <= 10240) {
-            if (tcp_window_size <= 9024) {
-             y = 1;
-            }
-            else {
-             y = 0;
-            }
-           }
-           else {
-            if (tcp_ack_num <= 7343) {
-             if (tcp_window_size <= 13152) {
-              if (tcp_window_size <= 12992) {
-               if (tcp_window_size <= 12320) {
-                y = 1;
-               }
-               else {
-                if (tcp_sequence_num <= 114049) {
-                 y = 0;
-                }
-                else {
-                 y = 1;
-                }
-               }
-              }
-              else {
-               y = 0;
-              }
-             }
-             else {
-              if (tcp_sequence_num <= 70119) {
-               if (tcp_ack_num <= 6420) {
-                y = 1;
-               }
-               else {
-                y = 0;
-               }
-              }
-              else {
-               if (tcp_ack_num <= 6234) {
-                if (tcp_window_size <= 15936) {
-                 if (tcp_ack_num <= 4911) {
-                  y = 1;
-                 }
-                 else {
-                  if (tcp_sequence_num <= 94847) {
-                   y = 1;
-                  }
-                  else {
-                   y = 0;
-                  }
-                 }
-                }
-                else {
-                 y = 1;
-                }
-               }
-               else {
-                if (tcp_ack_num <= 6264) {
-                 y = 0;
-                }
-                else {
-                 if (tcp_sequence_num <= 75920) {
-                  if (tcp_sequence_num <= 74472) {
-                   y = 1;
-                  }
-                  else {
-                   y = 0;
-                  }
-                 }
-                 else {
-                  y = 1;
-                 }
-                }
-               }
-              }
-             }
-            }
-            else {
-             if (tcp_ack_num <= 7363) {
-              y = 0;
-             }
-             else {
-              if (tcp_window_size <= 24256) {
-               if (tcp_sequence_num <= 88113) {
-                if (tcp_sequence_num <= 86665) {
-                 y = 1;
-                }
-                else {
-                 y = 0;
-                }
-               }
-               else {
-                y = 1;
-               }
-              }
-              else {
-               if (tcp_window_size <= 24352) {
-                y = 0;
-               }
-               else {
-                y = 1;
-               }
-              }
-             }
-            }
-           }
-          }
-         }
-         else {
-          if (tcp_window_size <= 45088) {
-           if (tcp_sequence_num <= 123289) {
-            if (tcp_window_size <= 45024) {
-             if (tcp_sequence_num <= 103609) {
-              if (tcp_ack_num <= 11454) {
-               if (tcp_sequence_num <= 81985) {
-                y = 1;
-               }
-               else {
-                if (tcp_sequence_num <= 81987) {
-                 y = 0;
-                }
-                else {
-                 y = 1;
-                }
-               }
-              }
-              else {
-               if (tcp_ack_num <= 11455) {
-                y = 0;
-               }
-               else {
-                y = 1;
-               }
-              }
-             }
-             else {
-              if (tcp_sequence_num <= 103795) {
-               y = 0;
-              }
-              else {
-               y = 1;
-              }
-             }
-            }
-            else {
-             if (tcp_sequence_num <= 60742) {
-              y = 1;
-             }
-             else {
-              if (tcp_ack_num <= 13921) {
-               y = 1;
-              }
-              else {
-               y = 0;
-              }
-             }
-            }
-           }
-           else {
-            if (tcp_sequence_num <= 123498) {
-             y = 0;
-            }
-            else {
-             if (tcp_sequence_num <= 185561) {
-              if (tcp_sequence_num <= 185454) {
-               if (ip_total_length <= 1209) {
-                if (ip_total_length <= 1144) {
-                 if (tcp_ack_num <= 15867) {
-                  if (tcp_window_size <= 27904) {
-                   if (tcp_window_size <= 27360) {
-                    y = 1;
-                   }
-                   else {
-                    y = 0;
-                   }
-                  }
-                  else {
-                   y = 1;
-                  }
-                 }
-                 else {
-                  if (ip_total_length <= 490) {
-                   y = 1;
-                  }
-                  else {
-                   y = 0;
-                  }
-                 }
-                }
-                else {
-                 y = 0;
-                }
-               }
-               else {
-                if (tcp_sequence_num <= 153470) {
-                 if (tcp_sequence_num <= 153052) {
-                  if (tcp_sequence_num <= 149653) {
-                   if (tcp_ack_num <= 11369) {
-                    y = 1;
-                   }
-                   else {
-                    if (tcp_ack_num <= 11400) {
-                     y = 0;
-                    }
-                    else {
-                     if (tcp_window_size <= 34400) {
-                      if (tcp_window_size <= 33728) {
-                       y = 1;
-                      }
-                      else {
-                       y = 0;
-                      }
-                     }
-                     else {
-                      y = 1;
-                     }
-                    }
-                   }
-                  }
-                  else {
-                   if (tcp_ack_num <= 8500) {
-                    if (tcp_ack_num <= 7798) {
-                     y = 1;
-                    }
-                    else {
-                     y = 0;
-                    }
-                   }
-                   else {
-                    y = 1;
-                   }
-                  }
-                 }
-                 else {
-                  y = 0;
-                 }
-                }
-                else {
-                 y = 1;
-                }
-               }
-              }
-              else {
-               y = 0;
-              }
-             }
-             else {
-              y = 1;
-             }
-            }
-           }
-          }
-          else {
-           if (tcp_window_size <= 48416) {
-            if (tcp_window_size <= 48352) {
-             y = 1;
-            }
-            else {
-             if (tcp_ack_num <= 18363) {
-              y = 0;
-             }
-             else {
-              y = 1;
-             }
-            }
-           }
-           else {
-            y = 1;
-           }
-          }
-         }
         }
-        else {
-         if (tcp_window_size <= 21344) {
-          if (tcp_window_size <= 20992) {
-           if (tcp_ack_num <= 2471) {
-            if (tcp_ack_num <= 2043) {
-             y = 1;
-            }
-            else {
-             y = 0;
-            }
-           }
-           else {
-            y = 1;
-           }
-          }
-          else {
-           y = 0;
-          }
-         }
-         else {
-          y = 1;
-         }
-        }
-       }
-      }
-     }
+    } else {
+        y = 0;
     }
-    else {
-     y = 0;
-    }
-
 
     __u32 key = 0;
     __u32 *val;
