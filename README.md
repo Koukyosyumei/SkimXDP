@@ -29,6 +29,38 @@ To put it simply, `skX` works as follows:
 5. Finally, the compiled object is attached to the network interface, enabling packet filtering.
 ```
 
+## Available Features
+
+You can use the following features as the input to the claffier.
+
+```
+# IPv4 Header
+unsigned int ip_ihl;
+unsigned int ip_version;
+int ip_preference;
+int ip_dscp;
+uint16_t ip_total_length;
+uint16_t ip_frag_offset;
+uint8_t ip_ttl;
+uint8_t ip_protocol;
+
+# TCP Header
+uint16_t source_port
+uint16_t dest_port
+unsigned int tcp_sequence_num
+unsigned int tcp_ack_num
+uint16_t tcp_window_size
+uint16_t tcp_urgent_pointer
+uint16_t tcp_cwr_flag
+uint16_t tcp_ece_flag
+uint16_t tcp_urg_flag
+uint16_t tcp_ack_flag
+uint16_t tcp_psh_flag
+uint16_t tcp_rst_flag
+uint16_t tcp_syn_flag
+uint16_t tcp_fin_flag
+```
+
 ## Tips
 
 - check
