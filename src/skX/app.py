@@ -47,7 +47,8 @@ def add_args(parser):
         help="name of interface",
     )
 
-    parser.add_argument("-s", "--stop_after_generation_of_sources", action="store_true")
+    parser.add_argument(
+        "-s", "--stop_after_generation_of_sources", action="store_true")
 
     parser.add_argument("-c", "--stop_after_compile", action="store_true")
 
@@ -55,7 +56,7 @@ def add_args(parser):
         "-t",
         "--tolerance",
         type=int,
-        default=10,
+        default=20,
         help="how many times skX should check the existence of the compiled object before attaching it to the network interface.",
     )
 
