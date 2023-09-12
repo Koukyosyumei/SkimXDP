@@ -78,3 +78,11 @@ sudo ip link set dev `name_of_interface` xdp off
 ## Reference
 
 This project is inspired by the following amazing papers and tools.
+
+- Takanori Hara, Masahiro Sasabe, On Practicality of Kernel Packet Processing Empowered by Lightweight Neural Network and Decision Tree, Proc. of 14th International Conference on Network of the Future, October 2023.
+
+- Bachl, Maximilian, Joachim Fabini, and Tanja Zseby. "A flow-based IDS using Machine Learning in eBPF." arXiv preprint arXiv:2102.09980 (2021).
+
+- de Carvalho Bertoli, Gustavo, et al. "Evaluation of netfilter and eBPF/XDP to filter TCP flag-based probing attacks." Proceedings of XXII symposium on operational applications in defense area (SIGE). 2020.
+
+- [motus/bpf-ml](https://github.com/motus/bpf-ml)

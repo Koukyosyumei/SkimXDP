@@ -8,7 +8,7 @@ from sklearn.metrics import roc_auc_score
 
 if __name__ == "__main__":
     df = pd.read_csv("demo/sampled-attack-simulation-alert.csv")
-    X = df.drop("alert", axis=1)
+    X = df.drop(["tcp_sequence_num", "tcp_ack_num", "alert"], axis=1)
     y = df["alert"]
 
     X_train, X_test, y_train, y_test = train_test_split(
@@ -26,7 +26,7 @@ if __name__ == "__main__":
     clf = LogisticRegression(random_state=0)
     clf.fit(X_train, y_train)
     print("AUC of LogisticRegression: ", roc_auc_score(
-        y_test, clf.predict_proba(X_test)[:, 1]))
+        y_test, clf.predict_proba(X_test)[:, 0]))
 
     with open("model/lr.pkl", "wb") as f:
         pickle.dump((clf, X.columns.tolist()), f)
