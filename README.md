@@ -18,15 +18,13 @@ Command-line Arguments: Run `skX` command, specifying various options using the 
 
 To put it simply, `skX` works as follows:
 
+```
 1. First, `skX` loads the pickle of a pair of pre-trained machine learning model and feature names from the specified file path. 
-
 2. Second, `skX` generates C code for the packet filter, incorporating the loaded model.
-
 3. Then, generated C code is saved to a file in the specified output directory, and helper headers are also saved.
-
-4. Next, `skX` compiles the generated C code into a binary object suitable for packet filtering (default compiler is c99).
-
+4. Next, `skX` compiles the generated C code into a binary object suitable for packet filtering (default compiler is clang).
 5. Finally, the compiled object is attached to the network interface, enabling packet filtering.
+```
 
 ## Tips
 
