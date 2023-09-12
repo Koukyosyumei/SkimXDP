@@ -1,4 +1,6 @@
 
+#include "skX_mlp.h"
+
 #include <arpa/inet.h>
 #include <linux/bpf.h>
 #include <linux/if_ether.h>
@@ -14,7 +16,6 @@
 #include <stdio.h>
 
 #include "bpf_helpers.h"
-#include "skX_mlp.h"
 
 #define printk(fmt, ...)                                           \
     ({                                                             \
@@ -102,12 +103,7 @@ int xdp(struct xdp_md *ctx) {
     uint16_t syn_flag = ntohs(tcph->syn);
     uint16_t fin_flag = ntohs(tcph->fin);
 
-    int y =
-        filter_func(ihl, version, ip_preference, dscp, total_length,
-                    frag_offset, ttl, protocol, source_port, dest_port,
-                    sequence_num, ack_num, window_size, urgent_pointer,
-                    cwr_flag, ece_flag, urg_flag, ack_flag, psh_flag,
-                    rst_flag, syn_flag, fin_flag);
+    int y = filter_func(iph, tcph);
 
     __u32 key = 0;
     __u32 *val;
