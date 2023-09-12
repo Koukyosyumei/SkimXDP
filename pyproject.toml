@@ -1,0 +1,18 @@
+[build-system]
+requires = ["setuptools>=58.0.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+
+name = "SkimXDP"
+version = "0.0.0"
+description = "Elevate your network's defenses with the power of scikit-learn and XDP, the dynamic duo of packet filtering."
+authors = [ { name="Hideaki Takahashi" } ]
+license = {file = "LICENSE"}
+
+[options]
+package_dir = {"" = "src"}
+
+[project.scripts]
+skX = "skX.app:main"
+
