@@ -70,10 +70,16 @@ def main():
     )
     args = parser.parse_args()
 
+    with open(args.path_to_model_and_featurenames, "rb") as f:
+        clf, feature_names = pickle.load(f)
+    header_content = export_clf_to_header(clf, feature_names)
+
     c_content = template_program.replace(
         '#include "PLEASE_INCLUDE_APPRIPRIATE_HEADER_THAT_DEFINES_FILTER_MDOEL"',
         f'#include "{args.file_name}.h"',
     )
+    c_content = c_content.replace("INSERTYOURLOGICTOFILTERPACKETS", header_content)
+
     with open(
         os.path.join(args.dir_to_save_outputs, args.file_name + ".c"), mode="w"
     ) as f:
@@ -83,14 +89,6 @@ def main():
         os.path.join(args.dir_to_save_outputs, helper_header_name), mode="w"
     ) as f:
         f.write(helper_header)
-
-    with open(args.path_to_model_and_featurenames, "rb") as f:
-        clf, feature_names = pickle.load(f)
-    header_content = export_clf_to_header(clf, feature_names)
-    with open(
-        os.path.join(args.dir_to_save_outputs, args.file_name + ".h"), mode="w"
-    ) as f:
-        f.write(header_content)
 
     if args.stop_after_generation_of_sources:
         return

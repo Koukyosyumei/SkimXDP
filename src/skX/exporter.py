@@ -2,23 +2,24 @@ from sklearn.tree import DecisionTreeClassifier
 from sklearn.linear_model import LogisticRegression
 from sklearn.neural_network import MLPClassifier
 
-include_def = "#include <stdint.h>\n"
-func_def = (
-    "inline int filter_func(unsigned int ip_ihl, unsigned int ip_version,\n"
-    "                        int ip_preference, int ip_dscp, uint16_t ip_total_length,\n"
-    "                        uint16_t ip_frag_offset, uint8_t ip_ttl, uint8_t ip_protocol,\n"
-    "                        uint16_t tcp_source_port, uint16_t tcp_dest_port,\n"
-    "                        unsigned int tcp_sequence_num, unsigned int tcp_ack_num,\n"
-    "                        uint16_t tcp_window_size, uint16_t tcp_urgent_pointer, uint16_t tcp_cwr_flag,\n"
-    "                        uint16_t tcp_ece_flag, uint16_t tcp_urg_flag, uint16_t tcp_ack_flag,\n"
-    "                        uint16_t tcp_psh_flag, uint16_t tcp_rst_flag, uint16_t tcp_syn_flag, uint16_t tcp_fin_flag) {\n"
-)
+# include_def = "#include <stdint.h>\n"
+# func_def = (
+#    "inline int filter_func(unsigned int ip_ihl, unsigned int ip_version,\n"
+#    "                        int ip_preference, int ip_dscp, uint16_t ip_total_length,\n"
+#    "                        uint16_t ip_frag_offset, uint8_t ip_ttl, uint8_t ip_protocol,\n"
+#    "                        uint16_t tcp_source_port, uint16_t tcp_dest_port,\n"
+#    "                        unsigned int tcp_sequence_num, unsigned int tcp_ack_num,\n"
+#    "                        uint16_t tcp_window_size, uint16_t tcp_urgent_pointer, uint16_t tcp_cwr_flag,\n"
+#    "                        uint16_t tcp_ece_flag, uint16_t tcp_urg_flag, uint16_t tcp_ack_flag,\n"
+#    "                        uint16_t tcp_psh_flag, uint16_t tcp_rst_flag, uint16_t tcp_syn_flag, uint16_t tcp_fin_flag) {\n"
+# )
+
 endl = "\n"
 par_left = "{"
 par_right = "}"
 
 
-def dump_tree(clf, feature_names, node_idx=0, indent_cnt=2, indent_char=" "):
+def dump_tree(clf, feature_names, node_idx=0, indent_cnt=4, indent_char=" "):
     code = ""
     if clf.tree_.threshold[node_idx] != -2:
         code += f"{indent_cnt*indent_char}if ({feature_names[clf.tree_.feature[node_idx]]} <= {int(clf.tree_.threshold[node_idx])}) {par_left+endl}"
@@ -48,14 +49,18 @@ def dump_tree(clf, feature_names, node_idx=0, indent_cnt=2, indent_char=" "):
         code += indent_cnt * indent_char + par_right + endl
 
     else:
-        code += f"{indent_cnt*indent_char}return {clf.tree_.value[node_idx].argmax()};{endl}"
+        code += (
+            f"{indent_cnt*indent_char}y = {clf.tree_.value[node_idx].argmax()};{endl}"
+        )
 
     return code
 
 
-def dump_logisticregression(clf, feature_names, threshold=0, precision=4, indent_char=" "):
+def dump_logisticregression(
+    clf, feature_names, threshold=0, precision=4, indent_char=" "
+):
     code = indent_char
-    code += f" return ({int(clf.intercept_[0] * (10**(precision)))}"
+    code += f"y= ({int(clf.intercept_[0] * (10**(precision)))}"
     for c, n in zip(clf.coef_[0], feature_names):
         code += f" + ({int(c * (10**precision))} * {n})"
     code += f") > {threshold};\n"
@@ -80,7 +85,7 @@ def dump_mlp(clf, feature_names, threshold=0, precision=4, indent_char=" "):
                     code += f"{indent_char}h_{layer_id + 1}_{j} = (0 > h_{layer_id + 1}_{j})?0:h_{layer_id + 1}_{j};\n"
                 code += f"{indent_char}h_{layer_id + 1}_{j} /= {10 ** precision};\n"
             else:
-                code += f"{indent_char}return h_{layer_id + 1}_{j} > {threshold};\n"
+                code += f"{indent_char}y = h_{layer_id + 1}_{j} > {threshold};\n"
     return code
 
 
@@ -88,11 +93,10 @@ def export_clf_to_header(clf, feature_names):
     if type(clf) == DecisionTreeClassifier:
         dumped_clf = dump_tree(clf, feature_names, indent_char=" ")
     elif type(clf) == LogisticRegression:
-        dumped_clf = dump_logisticregression(
-            clf, feature_names, indent_char=" ")
+        dumped_clf = dump_logisticregression(clf, feature_names, indent_char=" " * 4)
     elif type(clf) == MLPClassifier:
-        dumped_clf = dump_mlp(clf, feature_names, indent_char=" ")
+        dumped_clf = dump_mlp(clf, feature_names, indent_char=" " * 4)
     else:
         raise ValueError(f"{type(clf)} is not supported.")
 
-    return include_def + "\n" + func_def + dumped_clf + "}"
+    return dumped_clf

@@ -16,7 +16,6 @@ template_program = """
 #include <stdio.h>
 
 #include "bpf_helpers.h"
-#include "PLEASE_INCLUDE_APPRIPRIATE_HEADER_THAT_DEFINES_FILTER_MDOEL"
 
 #define printk(fmt, ...)                                           \\
     ({                                                             \\
@@ -72,14 +71,14 @@ int xdp(struct xdp_md *ctx) {
         index = iph->protocol;
     }
     nh_off = sizeof(*iph);
-    unsigned int ihl = ntohl(iph->ihl);
-    unsigned int version = ntohl(iph->version);
+    unsigned int ip_ihl = ntohl(iph->ihl);
+    unsigned int ip_version = ntohl(iph->version);
     int ip_preference = IPTOS_PREC(iph->tos);
-    int dscp = IPTOS_TOS(iph->tos);
-    uint16_t total_length = ntohs(iph->tot_len);
-    uint16_t frag_offset = ntohs(iph->frag_off);
-    uint8_t ttl = iph->ttl;
-    uint8_t protocol = iph->protocol;
+    int ip_dscp = IPTOS_TOS(iph->tos);
+    uint16_t ip_total_length = ntohs(iph->tot_len);
+    uint16_t ip_frag_offset = ntohs(iph->frag_off);
+    uint8_t ip_ttl = iph->ttl;
+    uint8_t ip_protocol = iph->protocol;
 
     // validate the length of data
     // eth+ipv4+tcp=54
@@ -88,28 +87,25 @@ int xdp(struct xdp_md *ctx) {
     }
 
     // parse tcp header
+
     tcph = data + nh_off;
     uint16_t source_port = ntohs(tcph->source);
     uint16_t dest_port = ntohs(tcph->dest);
-    unsigned int sequence_num = ntohl(tcph->seq);
-    unsigned int ack_num = ntohl(tcph->ack_seq);
-    uint16_t window_size = ntohs(tcph->window);
-    uint16_t urgent_pointer = ntohs(tcph->urg_ptr);
-    uint16_t cwr_flag = ntohs(tcph->cwr);
-    uint16_t ece_flag = ntohs(tcph->ece);
-    uint16_t urg_flag = ntohs(tcph->urg);
-    uint16_t ack_flag = ntohs(tcph->ack);
-    uint16_t psh_flag = ntohs(tcph->psh);
-    uint16_t rst_flag = ntohs(tcph->rst);
-    uint16_t syn_flag = ntohs(tcph->syn);
-    uint16_t fin_flag = ntohs(tcph->fin);
+    unsigned int tcp_sequence_num = ntohl(tcph->seq);
+    unsigned int tcp_ack_num = ntohl(tcph->ack_seq);
+    uint16_t tcp_window_size = ntohs(tcph->window);
+    uint16_t tcp_urgent_pointer = ntohs(tcph->urg_ptr);
+    uint16_t tcp_cwr_flag = ntohs(tcph->cwr);
+    uint16_t tcp_ece_flag = ntohs(tcph->ece);
+    uint16_t tcp_urg_flag = ntohs(tcph->urg);
+    uint16_t tcp_ack_flag = ntohs(tcph->ack);
+    uint16_t tcp_psh_flag = ntohs(tcph->psh);
+    uint16_t tcp_rst_flag = ntohs(tcph->rst);
+    uint16_t tcp_syn_flag = ntohs(tcph->syn);
+    uint16_t tcp_fin_flag = ntohs(tcph->fin);
 
-    int y =
-        filter_func(ihl, version, ip_preference, dscp, total_length,
-                    frag_offset, ttl, protocol, source_port, dest_port,
-                    sequence_num, ack_num, window_size, urgent_pointer,
-                    cwr_flag, ece_flag, urg_flag, ack_flag, psh_flag,
-                    rst_flag, syn_flag, fin_flag);
+    int y = 1;
+INSERTYOURLOGICTOFILTERPACKETS
 
     __u32 key = 0;
     __u32 *val;
