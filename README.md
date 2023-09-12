@@ -2,6 +2,9 @@
 
 SkimXDP (skX) is a powerful tool that combines the capabilities of scikit-learn, a popular machine learning library, and XDP (eXpress Data Path), a technology for packet filtering in Linux. With SkimXDP, you can enhance your network's security by creating custom packet filters using machine learning models. This document explains the main components and usage of the SkimXDP app.
 
+> **Note**
+> Please use this tool only for experimental usage.
+
 ## Usage 
 
 Command-line Arguments: Run `skX` command, specifying various options using the following arguments:
@@ -39,3 +42,7 @@ ip link show dev lo
 ```bash
 sudo ip link set dev `name_of_interface` xdp off
 ```
+
+## Reference
+
+This project is inspired by the following amazing papers and tools.
