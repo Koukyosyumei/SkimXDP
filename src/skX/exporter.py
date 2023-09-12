@@ -83,7 +83,7 @@ def dump_mlp(clf, feature_names, threshold=0, precision=4, indent_char=" "):
             if layer_id < len_layers - 1:
                 if clf.activation == "relu":
                     code += f"{indent_char}h_{layer_id + 1}_{j} = (0 > h_{layer_id + 1}_{j})?0:h_{layer_id + 1}_{j};\n"
-                code += f"{indent_char}h_{layer_id + 1}_{j} /= {10 ** precision};\n"
+                code += f"{indent_char}h_{layer_id + 1}_{j} = sdiv(h_{layer_id + 1}_{j}, {10 ** precision});\n"
             else:
                 code += f"{indent_char}y = h_{layer_id + 1}_{j} > {threshold};\n"
     return code

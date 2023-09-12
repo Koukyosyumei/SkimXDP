@@ -414,3 +414,15 @@ static int (*bpf_skb_adjust_room)(void *ctx, __s32 len_diff, __u32 mode,
 #endif
 
 #endif
+
+int32_t sdiv(int32_t a, int32_t b) {
+    bool aneg = a < 0;
+    bool bneg = b < 0;
+    // get the absolute positive value of both
+    uint32_t adiv = aneg ? -a : a;
+    uint32_t bdiv = bneg ? -b : b;
+    // Do udiv
+    uint32_t out = adiv / bdiv;
+    // Make output negative if one or the other is negative, not both
+    return aneg != bneg ? -out : out;
+}
