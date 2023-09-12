@@ -5,9 +5,15 @@ SkimXDP (skX) is a powerful tool that combines the capabilities of scikit-learn,
 > **Note**
 > Please use this tool only for experimental usage.
 
-## Usage 
+## Usage
 
-Command-line Arguments: Run `skX` command, specifying various options using the following arguments:
+- example
+
+```
+skX -m model/tree.pkl -d outputs -f skX_tree -i lo
+```
+
+- Commmand Line Arguments:
 
 ```
 -m or --path_to_model_and_featurenames: Provide the path to the pickled pre-trained model and the list of feature names.
@@ -18,6 +24,8 @@ Command-line Arguments: Run `skX` command, specifying various options using the 
 -c or --stop_after_compile: Optionally, stop execution after compiling the code.
 -t or --tolerance: Set the tolerance level for checking the existence of the compiled object before attaching it to the network interface.
 ```
+
+## Overview
 
 To put it simply, `skX` works as follows:
 
