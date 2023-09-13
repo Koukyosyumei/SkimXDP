@@ -6,6 +6,14 @@ SkimXDP (skX) is a powerful tool that combines the capabilities of two technolog
 > **Note**
 > Please keep in mind that this project is a proof-of-concept.
 
+## Install
+
+```bash
+git clone https://github.com/Koukyosyumei/SkimXDP.git
+cd SkimXDP
+pip install -e .
+```
+
 ## Usage
 
 ### Command Line Interface (CLI)
