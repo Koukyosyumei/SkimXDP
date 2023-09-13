@@ -75,7 +75,7 @@ def dump_linear_model(
     code += f"y += ({int(clf.intercept_[0] * (10**(precision)))}"
     for c, n in zip(clf.coef_[0], feature_names):
         code += f" + ({int(c * (10**precision))} * {n})"
-    code += f") > {threshold};{endl}"
+    code += f") > {int(threshold * (10 ** precision))};{endl}"
     return code
 
 
@@ -97,20 +97,22 @@ def dump_mlp(clf, feature_names, threshold=0, precision=4, indent_char=" "):
                     code += f"{indent_char}h_{layer_id + 1}_{j} = (0 > h_{layer_id + 1}_{j})?0:h_{layer_id + 1}_{j};{endl}"
                 code += f"{indent_char}h_{layer_id + 1}_{j} = sdiv(h_{layer_id + 1}_{j}, {10 ** precision});{endl}"
             else:
-                code += f"{indent_char}y += h_{layer_id + 1}_{j} > {threshold};{endl}"
+                code += f"{indent_char}y += h_{layer_id + 1}_{j} > {int(threshold * (10 ** precision))};{endl}"
     return code
 
 
-def export_clf(clf, feature_names, precision=4):
+def export_clf(clf, feature_names, threshold=0, precision=4):
     if type(clf) == DecisionTreeClassifier:
         dumped_clf = dump_tree(clf, feature_names, indent_char=" ")
     elif type(clf) == RandomForestClassifier:
         dumped_clf = dump_randomforest(clf, feature_names, indent_char=" ")
     elif type(clf) in [LogisticRegression, RidgeClassifier]:
         dumped_clf = dump_linear_model(
-            clf, feature_names, indent_char=" " * 4, precision=precision)
+            clf, feature_names, threshold=threshold,
+            indent_char=" " * 4, precision=precision)
     elif type(clf) == MLPClassifier:
         dumped_clf = dump_mlp(clf, feature_names,
+                              threshold=threshold,
                               indent_char=" " * 4, precision=precision)
     else:
         raise ValueError(f"{type(clf)} is not supported.")

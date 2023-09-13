@@ -53,7 +53,6 @@ def add_args(parser):
     parser.add_argument("-c", "--stop_after_compile", action="store_true")
 
     parser.add_argument(
-        "-t",
         "--tolerance",
         type=int,
         default=20,
@@ -61,7 +60,13 @@ def add_args(parser):
     )
 
     parser.add_argument(
-        "-p",
+        "--threshold",
+        type=int,
+        default=0,
+        help="precision for quantization",
+    )
+
+    parser.add_argument(
         "--precision",
         type=int,
         default=4,
@@ -81,7 +86,8 @@ def main():
 
     with open(args.path_to_model_and_featurenames, "rb") as f:
         clf, feature_names = pickle.load(f)
-    dumped_clf = export_clf(clf, feature_names, precision=args.precision)
+    dumped_clf = export_clf(
+        clf, feature_names, threshold=args.threshold, precision=args.precision)
 
     c_content = template_program.replace(
         '#include "PLEASE_INCLUDE_APPRIPRIATE_HEADER_THAT_DEFINES_FILTER_MDOEL"',

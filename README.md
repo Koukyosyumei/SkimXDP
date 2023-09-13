@@ -32,7 +32,9 @@ Arguments for `skX`
 - `-i` or `--interface`: Specify the name of the network interface.
 - `-s` or `--stop_after_generation_of_sources`: Optionally, stop execution after generating source code.
 - `-c` or `--stop_after_compile`: Optionally, stop execution after compiling the code.
-- `-t` or `--tolerance`: Set the tolerance level for checking the existence of the compiled object before attaching it to the network interface.
+- `--threshod`: Threshold to being predicted as positive (effective for Linear Models and MLP)
+- `precision`: Precision for quantization (effective for Linear Models and MLP)
+- `--tolerance`: Set the tolerance level for checking the existence of the compiled object before attaching it to the network interface.
 
 
 ### Training Example
@@ -100,7 +102,7 @@ In a nutshell, here's how SkimXDP works:
 - To check the status of a network interface, you can use the following command:
 
 ```bash
-ip link show dev lo
+ip link show dev `name_of_interface`
 ```
 
 - To remove the packet filter from an interface, you can use the following command (replace name_of_interface with the actual interface name):
