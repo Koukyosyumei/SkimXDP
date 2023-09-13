@@ -26,7 +26,7 @@ skX -m model/tree.pkl -d outputs -f skX_tree -i lo
 
 Arguments for `skX`
 
-- `-m` or `--path_to_model_and_featurenames`: Specify the path to the pre-trained model (in pickle format) and the list of feature names.
+- `-m` or `--path_to_model_and_featurenames`: Specify the path to the pickle storing a pair of pre-trained model and the list of feature names.
 - `-d` or `--dir_to_save_outputs`: Set the directory path where all the output files will be saved.
 - `-f` or `--file_name`: Define the name for the output binary.
 - `-i` or `--interface`: Specify the name of the network interface.
