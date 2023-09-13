@@ -1,45 +1,40 @@
 # SkimXDP
 
-SkimXDP (skX) is a powerful tool that combines the capabilities of scikit-learn, a popular machine learning library, and XDP (eXpress Data Path), a technology for packet filtering in Linux. With SkimXDP, you can enhance your network's security by creating custom packet filters using machine learning models. This document explains the main components and usage of the SkimXDP app.
+SkimXDP (skX) is a powerful tool that combines the capabilities of two technologies: scikit-learn, a widely-used machine learning library, and XDP (eXpress Data Path), a technology used for packet filtering in Linux. With SkimXDP, you can enhance your network's security by creating custom packet filters using machine learning models. This document provides an overview of the main components and how to use the SkimXDP application.
+
 
 > **Note**
-> Please use this tool only for experimental usage.
+> Please keep in mind that this project is a proof-of-concept.
 
 ## Usage
 
-- example
+### Command Line Interface (CLI)
 
-```
+Here's an example of how to use SkimXDP from the command line:
+
+```bash
 skX -m model/tree.pkl -d outputs -f skX_tree -i lo
 ```
 
-- Commmand Line Arguments:
+Arguments for `skX`
 
-```
--m or --path_to_model_and_featurenames: Provide the path to the pickled pre-trained model and the list of feature names.
--d or --dir_to_save_outputs: Set the path to the directory where all outputs will be saved.
--f or --file_name: Specify the name of the output binary.
--i or --interface: Define the name of the network interface.
--s or --stop_after_generation_of_sources: Optionally, stop execution after generating source code.
--c or --stop_after_compile: Optionally, stop execution after compiling the code.
--t or --tolerance: Set the tolerance level for checking the existence of the compiled object before attaching it to the network interface.
-```
+- `-m` or `--path_to_model_and_featurenames`: Specify the path to the pre-trained model (in pickle format) and the list of feature names.
+- `-d` or `--dir_to_save_outputs`: Set the directory path where all the output files will be saved.
+- `-f` or `--file_name`: Define the name for the output binary.
+- `-i` or `--interface`: Specify the name of the network interface.
+- `-s` or `--stop_after_generation_of_sources`: Optionally, stop execution after generating source code.
+- `-c` or `--stop_after_compile`: Optionally, stop execution after compiling the code.
+- `-t` or `--tolerance`: Set the tolerance level for checking the existence of the compiled object before attaching it to the network interface.
 
-## Overview
 
-To put it simply, `skX` works as follows:
+### Training Example
 
-```
-1. First, `skX` loads the pickle of a pair of pre-trained machine learning model and feature names from the specified file path. 
-2. Second, `skX` generates C code for the packet filter, incorporating the loaded model.
-3. Then, generated C code is saved to a file in the specified output directory, and helper headers are also saved.
-4. Next, `skX` compiles the generated C code into a binary object suitable for packet filtering (default compiler is clang).
-5. Finally, the compiled object is attached to the network interface, enabling packet filtering.
-```
+To use `skX`, you need the pickle file of a pre-trained classifier and its associated feature names. You can find a demonstration of how to train classifiers in the [demo/train.py](demo/train.py) file.
 
-## Available Features
 
-You can use the following features as the input to the claffier.
+### Available Features
+
+You can currently use the following features as the input to the claffier.
 
 ```
 # IPv4 Header
@@ -69,15 +64,38 @@ uint16_t tcp_syn_flag
 uint16_t tcp_fin_flag
 ```
 
+### Supported Models
+
+`skX` currently supports the following machine learning algorithms
+
+- sklearn.tree.DecisionTreeClassifier
+- sklearn.ensemble.RandomForestClassifier
+- sklearn.linear_model.LogisticRegression
+- sklearn.linear_model.RidgeClassifier
+- sklearn.neural_network.MLPClassifier
+
+## Worlflow
+
+In a nutshell, here's how SkimXDP works:
+
+
+```
+1. First, `skX` loads the pickle of a pair of pre-trained machine learning model and feature names from the specified file path. 
+2. Second, `skX` generates C code for the packet filter, incorporating the loaded model.
+3. Then, generated C code is saved to a file in the specified output directory, and helper headers are also saved.
+4. Next, `skX` compiles the generated C code into a binary object suitable for packet filtering (default compiler is clang).
+5. Finally, the compiled object is attached to the network interface, enabling packet filtering.
+```
+
 ## Tips
 
-- check
+- To check the status of a network interface, you can use the following command:
 
 ```bash
 ip link show dev lo
 ```
 
-- remove
+- To remove the packet filter from an interface, you can use the following command (replace name_of_interface with the actual interface name):
 
 ```bash
 sudo ip link set dev `name_of_interface` xdp off
@@ -85,7 +103,7 @@ sudo ip link set dev `name_of_interface` xdp off
 
 ## Reference
 
-This project is inspired by the following amazing papers and tools.
+This project draws inspiration from the following research papers and tools:
 
 - Takanori Hara, Masahiro Sasabe, On Practicality of Kernel Packet Processing Empowered by Lightweight Neural Network and Decision Tree, Proc. of 14th International Conference on Network of the Future, October 2023.
 
