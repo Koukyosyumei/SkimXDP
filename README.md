@@ -32,14 +32,13 @@ Arguments for `skX`
 - `-i` or `--interface`: Specify the name of the network interface.
 - `-s` or `--stop_after_generation_of_sources`: Optionally, stop execution after generating source code.
 - `-c` or `--stop_after_compile`: Optionally, stop execution after compiling the code.
-- `--threshod`: Threshold to being predicted as positive (effective for Linear Models and MLP)
-- `precision`: Precision for quantization (effective for Linear Models and MLP)
+- `--threshod`: Determine when a prediction is considered positive (only effective for Linear Models and MLP)
+- `--precision`: Control the level of precision used in quantization (only effective for Linear Models and MLP)
 - `--tolerance`: Set the tolerance level for checking the existence of the compiled object before attaching it to the network interface.
-
 
 ### Training Example
 
-To use `skX`, you need the pickle file of a pre-trained classifier and its associated feature names. You can find a demonstration of how to train classifiers in the [demo/train.py](demo/train.py) file.
+To use `skX`, you need the pickle file of a pre-trained classifier and its associated feature names. You can find a demonstration of how to train classifiers in the [demo/train.py](demo/train.py) file. This demo uses [*AttackSimulationLab*](https://www.kaggle.com/datasets/moradrawashdeh/attack-simulation-lab) dataset.
 
 
 ### Available Features
