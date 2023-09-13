@@ -87,7 +87,6 @@ uint16_t tcp_fin_flag
 
 In a nutshell, here's how SkimXDP works:
 
-
 ```
 1. First, `skX` loads the pickle of a pair of pre-trained machine learning model and feature names from the specified file path. 
 2. Second, `skX` generates C code for the packet filter, incorporating the loaded model.
@@ -108,6 +107,13 @@ ip link show dev `name_of_interface`
 
 ```bash
 sudo ip link set dev `name_of_interface` xdp off
+```
+
+- You can check the log in `/sys/kernel/debug/tracing/trace_pipe`. You may need to manually mount the debugfs.
+
+```bash
+mount -t debugfs none /sys/kernel/debug
+cat /sys/kernel/debug/tracing/trace_pipe
 ```
 
 ## Reference
