@@ -81,7 +81,6 @@ uint16_t tcp_fin_flag
 - sklearn.ensemble.RandomForestClassifier
 - sklearn.linear_model.LogisticRegression
 - sklearn.linear_model.RidgeClassifier
-- sklearn.neural_network.MLPClassifier
 
 ## Worlflow
 
