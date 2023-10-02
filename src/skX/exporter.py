@@ -2,7 +2,6 @@ import math
 
 from sklearn.tree import DecisionTreeClassifier
 from sklearn.linear_model import LogisticRegression, RidgeClassifier
-from sklearn.neural_network import MLPClassifier
 from sklearn.ensemble import RandomForestClassifier
 
 # include_def = "#include <stdint.h>\n"
@@ -62,42 +61,17 @@ def dump_tree(clf, feature_names, node_idx=0, indent_cnt=4, indent_char=" "):
 def dump_randomforest(clf, feature_names, node_idx=0, indent_cnt=4, indent_char=" "):
     code = ""
     for estimator in clf.estimators_:
-        code += dump_tree(estimator, feature_names,
-                          node_idx, indent_cnt, indent_char)
+        code += dump_tree(estimator, feature_names, node_idx, indent_cnt, indent_char)
     code += f"{endl}{indent_cnt * indent_char}y = (y > {math.floor(len(clf.estimators_) / 2)});{endl}"
     return code
 
 
-def dump_linear_model(
-    clf, feature_names, threshold=0, precision=4, indent_char=" "
-):
+def dump_linear_model(clf, feature_names, threshold=0, precision=4, indent_char=" "):
     code = indent_char
     code += f"y += ({int(clf.intercept_[0] * (10**(precision)))}"
     for c, n in zip(clf.coef_[0], feature_names):
         code += f" + ({int(c * (10**precision))} * {n})"
     code += f") > {int(threshold * (10 ** precision))};{endl}"
-    return code
-
-
-def dump_mlp(clf, feature_names, threshold=0, precision=4, indent_char=" "):
-    code = ""
-    len_layers = len(clf.coefs_)
-    for c, n in enumerate(feature_names):
-        code += f"{indent_char}int h_0_{c} = (int){n};{endl}"
-
-    for layer_id in range(len_layers):
-        code += endl
-        for j in range(clf.coefs_[layer_id].shape[1]):
-            code += f"{indent_char}int h_{layer_id + 1}_{j} = {int(clf.intercepts_[layer_id][j] * (10 ** precision))}"
-            for c in range(len(clf.coefs_[layer_id][:, j])):
-                code += f" + ({int(clf.coefs_[layer_id][c, j] * (10 ** precision))} * h_{layer_id}_{c})"
-            code += f";{endl}"
-            if layer_id < len_layers - 1:
-                if clf.activation == "relu":
-                    code += f"{indent_char}h_{layer_id + 1}_{j} = (0 > h_{layer_id + 1}_{j})?0:h_{layer_id + 1}_{j};{endl}"
-                code += f"{indent_char}h_{layer_id + 1}_{j} = sdiv(h_{layer_id + 1}_{j}, {10 ** precision});{endl}"
-            else:
-                code += f"{indent_char}y += h_{layer_id + 1}_{j} > {int(threshold * (10 ** precision))};{endl}"
     return code
 
 
@@ -108,12 +82,12 @@ def export_clf(clf, feature_names, threshold=0, precision=4):
         dumped_clf = dump_randomforest(clf, feature_names, indent_char=" ")
     elif type(clf) in [LogisticRegression, RidgeClassifier]:
         dumped_clf = dump_linear_model(
-            clf, feature_names, threshold=threshold,
-            indent_char=" " * 4, precision=precision)
-    elif type(clf) == MLPClassifier:
-        dumped_clf = dump_mlp(clf, feature_names,
-                              threshold=threshold,
-                              indent_char=" " * 4, precision=precision)
+            clf,
+            feature_names,
+            threshold=threshold,
+            indent_char=" " * 4,
+            precision=precision,
+        )
     else:
         raise ValueError(f"{type(clf)} is not supported.")
 

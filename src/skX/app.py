@@ -47,8 +47,7 @@ def add_args(parser):
         help="name of interface",
     )
 
-    parser.add_argument(
-        "-s", "--stop_after_generation_of_sources", action="store_true")
+    parser.add_argument("-s", "--stop_after_generation_of_sources", action="store_true")
 
     parser.add_argument("-c", "--stop_after_compile", action="store_true")
 
@@ -87,7 +86,8 @@ def main():
     with open(args.path_to_model_and_featurenames, "rb") as f:
         clf, feature_names = pickle.load(f)
     dumped_clf = export_clf(
-        clf, feature_names, threshold=args.threshold, precision=args.precision)
+        clf, feature_names, threshold=args.threshold, precision=args.precision
+    )
 
     c_content = template_program.replace(
         '#include "PLEASE_INCLUDE_APPRIPRIATE_HEADER_THAT_DEFINES_FILTER_MDOEL"',
